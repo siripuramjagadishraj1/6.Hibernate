@@ -1,4 +1,4 @@
-package com.hib;
+package b_association_mapping;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.hib;
+package b_association_mapping;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -8,19 +8,21 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class HibernateTest {
+public class Z_All_AssociationMappingTest_3_Uni_BiDirectional {
 	
 	public static void main(String[] args) {
-		//Create
-		oneToOneUnidirectional();
-		//Update
-		//oneToOneBiDirectional();
-		
-		
+		all_AssociationMapping_Insert_Test();
+		//all_AssociationMapping_CRUD_Test();
 	}
 	
-	public static void oneToOneBiDirectional() {
-			Configuration cf = new Configuration().configure("hibernate-cfg.xml");
+	public static void all_AssociationMapping_CRUD_Test() {
+			Configuration cf = new Configuration().configure("hibernate-cfg.xml")
+										.addAnnotatedClass(b_association_mapping.Employee.class)
+										.addAnnotatedClass(b_association_mapping.EmployeeDetails.class)
+										.addAnnotatedClass(b_association_mapping.Course.class)
+										.addAnnotatedClass(b_association_mapping.Mentor.class)
+										.setProperty("hibernate.hbm2ddl.auto", "update")
+					;
 			SessionFactory sf = cf.buildSessionFactory();
 			Session ss =  sf.openSession();
 			Transaction tx = ss.beginTransaction();
@@ -35,8 +37,12 @@ public class HibernateTest {
 	}
 	
 	
-	public static void oneToOneUnidirectional() {
-		Configuration cf = new Configuration().configure("hibernate-cfg.xml");
+	public static void all_AssociationMapping_Insert_Test() {
+		Configuration cf = new Configuration().configure("hibernate-cfg.xml")
+									.addAnnotatedClass(b_association_mapping.Employee.class)
+									.addAnnotatedClass(b_association_mapping.EmployeeDetails.class)
+									.addAnnotatedClass(b_association_mapping.Course.class)
+									.addAnnotatedClass(b_association_mapping.Mentor.class);
 		SessionFactory sf = cf.buildSessionFactory();
 		Session ss =  sf.openSession();
 		Transaction tx = ss.beginTransaction();
@@ -61,6 +67,7 @@ public class HibernateTest {
 			Mentor m1= new Mentor();
 			m1.setEmployees(Arrays.asList(e));
 			e.setMentors(Arrays.asList(m1));
+			
 			ss.save(e);
 			
 		tx.commit();

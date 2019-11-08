@@ -9,16 +9,31 @@
 		<property name="hibernate.connection.username">postgres</property>
 		<property name="hibernate.connection.password">password</property>
 		
-		<property name="hbm2ddl.auto">create</property>
-		
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		 
 		<property name="hibernate.current_session_context_class">thread</property>
 		<property name="hibernate.show_sql">true</property>
-		 <property name="hibernate.connection.pool_size">1</property>
+		<property name="hibernate.connection.pool_size">1</property>
 		 
-		 <mapping class="com.hib.Employee"/>
-		 <mapping class="com.hib.EmployeeDetails"/>
-		 <mapping class="com.hib.Course"/>
-		 <mapping class="com.hib.Mentor"/>
+		 
+		 <!-- COLLECTION MAPPING -->
+		 <!-- 
+		 <mapping class="com.inheritance.VehicleEntitiy"/>
+		  -->
+		 
+		 <!-- RELATION MAPPING -->
+		 <!-- 
+		 <mapping class="com.mapping.Employee"/>
+		 <mapping class="com.mapping.EmployeeDetails"/>
+		 <mapping class="com.mapping.Course"/>
+		 <mapping class="com.mapping.Mentor"/>
+		  -->
+		  
+		  <!-- INHERITANCE MAPPING -->
+		  <!-- 
+		 <mapping class="com.inheritance.Book"/>
+		  --> 
+		 
 		
 	</session-factory>
 </hibernate-configuration>

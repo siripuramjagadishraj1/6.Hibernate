@@ -1,4 +1,4 @@
-package com.hib;
+package b_association_mapping;
 
 import java.util.List;
 
