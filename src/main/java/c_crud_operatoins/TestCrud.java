@@ -18,15 +18,11 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.NativeQuery;
 
-import com.sun.istack.NotNull;
-
-
 @Entity
 class Router{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer rid;
-	@NotNull
 	private String routerName;
 	private String isGood;
 	//Getter and Setter
@@ -45,14 +41,14 @@ public class TestCrud {
 	public static void main(String[] args) {
 		//CREATED by Hibernate
 		//UPDATE/INSERT
-		insertUpdateData();
+		//insertUpdateData();
 		//RETRIVE
-		getInsertedData();
+		getData();
 		//DELETE
 		//delteInsertedData();
 	}
 
-	public static void getInsertedData() {
+	public static void getData() {
 		SessionFactory sf = new Configuration().configure("hibernate-cfg.xml")
 									.addAnnotatedClass(Router.class)
 									.setProperty("hibernate.hbm2ddl.auto", "update")

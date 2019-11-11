@@ -19,6 +19,13 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1206-jdbc42</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>5.2.2.Final</version>
+		</dependency>
+
 	</dependencies>
 
 </project>
