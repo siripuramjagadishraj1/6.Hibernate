@@ -6,6 +6,12 @@
 	<artifactId>HibernateTest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -20,11 +26,29 @@
 			<version>9.4-1206-jdbc42</version>
 		</dependency>
 
+		<!-- EHCache Core APIs -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			 <version>2.6.11</version>
+		</dependency>
+		<!-- Hibernate EHCache API -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
-			<version>5.2.2.Final</version>
+			 <version>5.3.5.Final</version>
 		</dependency>
+		<!-- EHCache uses slf4j for logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-ehcache</artifactId> 
+			<version>5.2.2.Final</version> </dependency> -->
+
+
 
 	</dependencies>
 

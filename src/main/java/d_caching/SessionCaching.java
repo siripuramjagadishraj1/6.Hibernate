@@ -1,15 +1,12 @@
 package d_caching;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -20,15 +17,19 @@ class BookEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long bid;
 	private String bname;
+	@Version
+	private Integer versionId;
 	//Getters and setters
 	public long getBid() {return bid;}
 	public void setBid(long bid) {this.bid = bid;}
 	public String getBname() {return bname;}
 	public void setBname(String bname) {this.bname = bname;}
+	@Override
+	public String toString() {return "[bid:"+this.bid+", bname:"+this.bname+"]";}
 }
 
 
-public class TestCaching {
+public class SessionCaching {
 	public static void main(String[] args) {
 		saveData();
 		getData();
@@ -43,9 +44,27 @@ public class TestCaching {
 		ss.beginTransaction();
 		
 			//1. Method 1 [NORMAL]
+			BookEntity entity1 = (BookEntity) ss.get(BookEntity.class, 1l);
+			BookEntity entity2 = (BookEntity) ss.load(BookEntity.class, 2l);
+			
 			System.out.println(ss.get(BookEntity.class, 1l));
 			System.out.println(ss.get(BookEntity.class, 1l));
 			System.out.println(ss.get(BookEntity.class, 1l));
+			System.out.println("Example showing Session Cache: "+ss.contains(entity1));
+			ss.evict(entity1);
+			System.out.println("====SESSION EVICTED====");
+			System.out.println("Example showing Session Cache: "+ss.contains(entity1));
+			
+			
+			System.out.println(entity2);
+			ss.clear();
+			System.out.println("====SESSION CLEARED====");
+			entity1 = (BookEntity) ss.load(BookEntity.class, 1l);
+			entity1.setBname("Mufti Ahmed");
+			entity1.setBname("Mufti Ahmed Three");
+			entity2 = (BookEntity) ss.load(BookEntity.class, 2l);
+			System.out.println(entity1);
+			System.out.println(entity2);
 			
 		ss.getTransaction().commit();
 		sf.close();

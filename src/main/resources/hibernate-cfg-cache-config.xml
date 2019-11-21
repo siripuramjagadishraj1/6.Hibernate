@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5439/postgres</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">password</property>
+		
+		 
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.connection.pool_size">1</property>
+		
+		<!-- 2nd Level Cache -->
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
+		 <property name="hibernate.cache.use_query_cache">true</property>
+ 		 <property name="net.sf.ehcache.configurationResourceName">/myehcache.xml</property>
+ 		 
+ 		 <!-- Disable the second-level cache -->
+    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>  
+
+		
+		 
+		 <!-- COLLECTION MAPPING -->
+		 <!-- 
+		 <mapping class="com.inheritance.VehicleEntitiy"/>
+		  -->
+		 
+		 <!-- RELATION MAPPING -->
+		 <!-- 
+		 <mapping class="com.mapping.Employee"/>
+		 <mapping class="com.mapping.EmployeeDetails"/>
+		 <mapping class="com.mapping.Course"/>
+		 <mapping class="com.mapping.Mentor"/>
+		  -->
+		  
+		  <!-- INHERITANCE MAPPING -->
+		  <!-- 
+		 <mapping class="com.inheritance.Book"/>
+		  --> 
+		 
+		
+	</session-factory>
+</hibernate-configuration>

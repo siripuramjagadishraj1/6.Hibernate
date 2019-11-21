@@ -51,9 +51,15 @@ https://github.com/hibernate/hibernate-orm/wiki/Migration-Guides
 
 Questions:
 ---------
+	First level Cache questions:
 	1. session.load() vs session.get() [former throws exception, later gives null if not found]
 	2. session.save() vs session.persist()..??
-	3. session.evict() vs session.clear()..??
+	3. session.evict({}) vs session.clear() vs sessoin.contains({}): evict removes 1 object from cache, clear removes all objects from cache.
+	
+	Second level cache questions:
+	1. Cahcing Strategies: READ, READ-WRITE, NON-Restricted READ-WRRITE, TRANSACTIONAL
+	2. Options: diskStore,defaultCache, cacheName, cache Regions. 
+	
 	3. Generation types, AUTO, IDENTITY..etc
 	4. LOADING: EAGER, 
 	5. CASCADING:
